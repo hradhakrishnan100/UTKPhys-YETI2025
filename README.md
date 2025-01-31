@@ -4,7 +4,7 @@
 
 Created for the **UTK Physics Department YETI Challenge (January 2025)**  
 
-The idea behind this project was to create a set of tools that I often find useful while conducting research, teaching, reading papers, and making presentations. This is not available on any browsers. The best way to test it would be in **Google Chrome**.
+The idea behind this project was to create a set of tools that I often find useful while conducting research, teaching, reading papers, and making presentations. This is not currently available on any browsers. The best way to test it would be in **Google Chrome**.
 
 ---
 
@@ -46,7 +46,7 @@ The idea behind this project was to create a set of tools that I often find usef
 ### 4. **Saved Articles**
    - Store and manage research references.  
 
-> **Note:** While these tools already exist individually, this extension consolidates them, saving tab space and improving efficiency.
+> **Note:** While these tools already exist individually, this extension consolidates them into one tool, saving tab space and improving efficiency.
 
 ---
 
