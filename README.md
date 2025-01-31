@@ -1,27 +1,98 @@
 # UTKPhys-YETI2025
 
-My tool!: PhysX (Physics+Extensions)
+## My Tool: PhysX (Physics + Extensions)
 
--The idea behind this was just to make some tools I always think would be helpful to be on hand while doing research/teaching/reading/making powerpoints and so on. I wasn't comfortable putting this on a browser store yet so I think the best way to test it would be in Chrome. The directions to do so are as follows
-1. Go to chrome://extensions
-2. Select developer mode
-3. Load unpacked - choose the physics-extension folder
-4. Make sure it is enabled in the toolbar
-5. Right click on the icon in the toolbar and press open sidepanel
+Created for the **UTK Physics Department YETI Challenge (January 2025)**  
 
--The tools are as follows. 
-1. A unit converter - lets you convert between units and returns the result with up to six decimal places. Choose from a number of categories. (I did as many as I could but this is easily expandable)
-2. A LaTeX renderer/converter. Allows you to type LaTeX code and return a downloadable jpeg or SVG or png. I find things like this very useful when making powerpoints. Also allows you to search for certain equations (also expandable). A few of the ones I did were kinematics equations, the Coulomb force equation, the gravitational force equation, Schrodinger's time dependent/independent equations. Lets you hover and see terms in equations.
-3. An arXiv search button.  Lets you search for authors and articles pertaining to a certain topic and gives results. You are able to cite/save the references. I find this useful when I'm already reading a paper and want to look up the citations and save them without opening new tabs. 
+The idea behind this project was to create a set of tools that I often find useful while conducting research, teaching, reading papers, and making presentations. This is not available on any browsers. The best way to test it would be in **Google Chrome**.
 
--Note that all of these are tools that exist already but this saves tab spaces and lets you do things more quickly. 
-My To Do List for stuff I want to add 
-1. Adding more of a glossary/explanation of terms and equations to the LaTeX renderer. Useful for just quick reading.
-2. Making the citation format more pleasing/accurate.
-3. Making a nicer place to view saved arXiv articles (folders you can save in). 
-4. A date reference/more filters for the arXiv search as well as pagination + reverse chronological order.
-5. Dark mode because it's superior
+---
 
-The file structure is as follows:
+## How to Install Locally
 
-There are also a number of easter eggs. I think it is more fun to find them yourself, but a full list can be found in easter.txt.
+1. Clone this repository:  
+   ```sh
+   git clone https://github.com/hradhakrishnan100/YETI2025.git
+   ```
+2. Open **Google Chrome** and navigate to:  
+   ```
+   chrome://extensions/
+   ```
+3. Enable **Developer Mode** (top right).
+4. Click **Load Unpacked** and select the `physics-extension` folder.
+
+---
+
+## Features
+
+### 1. **Unit Converter**
+   - Convert between physics-related units.  
+   - Includes a wide range of unit conversions but can be easily expanded.
+
+### 2. **Equation Overlay**
+   - Render, download, and search **LaTeX equations**.  
+   - Useful for making PowerPoint slides.  
+   - Search for predefined equations such as:
+     - Kinematics equations  
+     - Coulomb force equation  
+     - Gravitational force equation  
+     - Schrödinger’s time-dependent & time-independent equations  
+     - More can be added, I ran out of time
+### 3. **arXiv Search**
+   - Find and save physics-related papers.  
+   - Allows citation management and reference saving.
+   - Highlights search terms
+
+### 4. **Saved Articles**
+   - Store and manage research references.  
+
+> **Note:** While these tools already exist individually, this extension consolidates them, saving tab space and improving efficiency.
+
+---
+
+## Future Improvements (To-Do List)
+- [ ] Expand **glossary/explanations** for LaTeX equations.  
+- [ ] Improve **citation formatting** for better readability and accuracy.  
+- [ ] Enhance saved arXiv articles with **folders** for organization.  
+- [ ] Implement **date filtering, pagination, and reverse chronological sorting** for arXiv search.
+- [ ] Allow for abstract **expansion**
+- [ ] Add **Dark Mode** (because it’s superior).  
+
+---
+
+## File Structure
+
+```
+physics-extension/
+│── manifest.json
+│── popup.js
+│── sidepanel.html
+│── styles.css
+```
+
+### **manifest.json**
+- The manifest file for the Chrome extension.  
+- Defines permissions, content scripts, background scripts, and UI elements.  
+- Declares the popup UI and permissions for arXiv API access.  
+
+### **popup.js**
+- The main JavaScript file handling logic for the extension.  
+- Manages carousel navigation between features.  
+- Handles unit conversion calculations.  
+- Fetches and displays arXiv papers.  
+- Manages saving and removing articles from storage.  
+
+### **sidepanel.html**
+- The main UI of the extension.  
+- Contains a carousel-based navigation system (Unit Converter, Equation Renderer, arXiv Search, Saved Papers).  
+- Includes search input for arXiv research.  
+
+### **styles.css**
+- Defines the styling for the extension’s UI.  
+- Includes themes, button styles, animations, and carousel layouts.  
+- Uses distinct color accents to differentiate features.  
+
+---
+
+## Easter Eggs
+There are several **easter eggs** hidden in the extension. I think it’s more fun to find them yourself, but a full list can be found in `easter.txt`.
