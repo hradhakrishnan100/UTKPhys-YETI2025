@@ -1,0 +1,426 @@
+/* Import both Quicksand and Roboto */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Roboto:wght@400;700&display=swap');
+
+/* Root Variables */
+:root {
+  --text-color: #2e2e38;
+  --bg-color: #ffffff;
+  --card-bg: #ffffff;
+
+  /* Accent Colors */
+  --accent-home: #4CAF50;       /* Green */
+  --accent-equation: #4A90E2;   /* Blue */
+  --accent-converter: #5CA6A0;  /* Teal */
+  --accent-search: #9d85c4;     /* Purple */
+  --accent-saved: #e8a7c6;      /* Light Pink for Saved Articles */
+
+  /* Current Accent references one of the above */
+  --current-accent: var(--accent-home);
+}
+
+/* Global Body Settings */
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif; /* Roboto by default */
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  width: 360px;
+  height: 600px;
+  overflow: hidden;
+}
+
+/* Headings Use Quicksand */
+h1, h2, h3 {
+  font-family: 'Quicksand', sans-serif;
+  color: var(--text-color);
+  margin: 0; /* Remove default margins for a cleaner look */
+}
+
+/* Panel Container */
+.panel-container {
+  display: flex;
+  flex-direction: column;
+  width: 360px;
+  height: 600px;
+  overflow: hidden;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* Carousel Container:
+   We have 5 slides total, each 360px wide.
+   So 5 * 360 = 1800. We subtract a bit if you want (like 8px) to prevent cutoff.
+   Let's do 1792px to mirror your existing offset style. */
+.carousel-container {
+  display: flex;
+  width: 1792px; /* 5 slides x 360 = 1800; used 1792 to avoid cutoff */
+  transition: transform 0.5s ease;
+}
+
+/* Each Carousel Slide */
+.carousel-slide {
+  width: 360px;
+  padding: 1rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  border-left: 4px solid var(--current-accent);
+  background-color: var(--card-bg);
+
+  /* By default, we center content vertically,
+     but if you want to push content up in certain slides,
+     override with "justify-content: flex-start" on that slide. */
+  justify-content: center;
+}
+
+/* Feature Panels on the Home Slide */
+.feature-panel-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.feature-panel {
+  padding: 12px; /* Reduce padding to make panels smaller */
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  max-height: 60px; /* Set a maximum height to ensure they fit */
+  font-size: 12px; /* Reduce text size slightly */
+}
+
+.feature-panel:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Accent Borders for each panel */
+.home-accent {
+  border: 3px solid var(--accent-home);
+}
+.conv-accent {
+  border: 3px solid var(--accent-converter);
+}
+.eq-accent {
+  border: 3px solid var(--accent-equation);
+}
+.ref-accent {
+  border: 3px solid var(--accent-search);
+}
+/* Saved Articles Panel Accent */
+.saved-accent {
+  border: 3px solid var(--accent-saved);
+}
+
+
+
+/* Carousel Navigation */
+.carousel-controls {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  padding: 5px 0;
+  box-sizing: border-box;
+}
+
+.nav-button {
+  background: none;
+  color: var(--current-accent);
+  font-size: 24px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+.nav-button:hover {
+  color: rgba(0, 0, 0, 0.7);
+  transform: scale(1.1);
+}
+
+
+/* ------------------
+   Unit Converter
+------------------- */
+.converter-label {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  margin-top: 8px;
+  display: block;
+}
+
+#input-value {
+  width: calc(100% - 16px);
+  padding: 8px;
+  border: 2px solid var(--current-accent);
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.unit-selection-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.unit-box {
+  width: 45%;
+}
+
+.unit-datalist {
+  width: calc(100% - 16px);
+  padding: 8px;
+  margin-bottom: 5px;
+  border: 2px solid var(--current-accent);
+  border-radius: 5px;
+  font-size: 14px;
+}
+.unit-datalist:focus {
+  border-color: var(--accent-converter);
+}
+
+.arrow {
+  font-size: 20px;
+  font-weight: bold;
+  transition: transform 0.3s ease-in-out;
+  margin-top: 12px;
+  margin-left: 4px;
+}
+.unit-selection-container:hover .arrow {
+  transform: scale(1.2);
+}
+
+select,
+input {
+  transition: all 0.3s ease-in-out;
+}
+select:focus,
+input:focus {
+  border-color: var(--current-accent);
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
+}
+
+.unit-message {
+  font-size: 12px;
+  font-style: italic;
+  color: #666;
+  margin-top: 4px;
+  display: block;
+}
+
+/* Conversion Result Animation */
+#conversion-result {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* Keyframes for various animations */
+@keyframes fallingEffect {
+  0% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(15px);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0.7;
+    transform: scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.result-animate {
+  animation: fadeIn 0.2s ease-out, pulse 0.4s ease-out;
+}
+
+/* -------------
+   Equation
+------------- */
+#latex-input {
+  width: calc(100% - 16px);
+  height: 80px;
+  border: 2px solid var(--accent-equation);
+  border-radius: 5px;
+  padding: 8px;
+  margin-bottom: 10px;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* -------------
+   ArXiv Search
+------------- */
+/* We'll reduce the margin so the search + title are closer to the top */
+.slide-3 {
+  justify-content: flex-start; /* Moves content up */
+}
+
+/* Making the results container taller by default */
+#arxiv-results-container {
+  max-height: 280px; /* or remove this if you want it entirely flexible */
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+/* Each result item uses Roboto by default */
+.arxiv-item {
+  font-family: 'Roboto', sans-serif;
+  background: #f8f8f8;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.arxiv-item h3 {
+  font-size: 14px;
+  margin: 5px 0;
+}
+.arxiv-item p {
+  font-size: 12px;
+  color: #444;
+}
+.arxiv-item a {
+  text-decoration: none;
+  color: #0077cc;
+}
+
+/* Buttons inside each result item */
+.arxiv-item button {
+  border: none;
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 6px;
+  margin-top: 5px;
+  transition: background 0.3s ease;
+}
+
+/* "Save Article" button styling */
+.save-article-btn {
+  background: #5CA6A0; /* matches converter accent or your choice */
+  color: #fff;
+}
+.save-article-btn:hover {
+  background: #468C85; /* darker hover */
+}
+
+/* "Citation" button styling */
+.citation-btn {
+  background: var(--accent-search); /* Purple from root if you like */
+  color: #fff;
+}
+.citation-btn:hover {
+  background: #846fad; /* darker hover */
+}
+
+/* Highlighted text for search terms */
+.highlighted-term {
+  background-color: color-mix(in srgb, var(--current-accent) 60%, white);
+  /* Fallback if color-mix not supported: background-color: #e0d4f3; */
+  padding: 0 2px;
+  border-radius: 3px;
+}
+
+/* Compact the search section */
+.search-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px; /* reduced from 10px to save space */
+}
+
+/* Rounded search button */
+.search-btn {
+  background-color: var(--accent-search);
+  color: white;
+  border: none;
+  border-radius: 30px; /* Fully rounded */
+  padding: 8px 14px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.search-btn:hover {
+  background: #846fad;
+}
+
+/* Saved articles container styling (Slide #4) */
+.slide-4 {
+  /* Pink accent border was added above. 
+     If you want to push content up, keep justify-content: flex-start here. */
+}
+
+#saved-articles-container {
+  margin-top: 10px;
+}
+#saved-articles-container h3 {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+/* Citation Copied Notification */
+.citation-copied {
+  position: absolute; /* or fixed, if you want it over everything */
+  bottom: 30px;
+  right: 20px;
+  background: var(--current-accent);
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  display: none;      /* hidden by default */
+  opacity: 0;
+  font-size: 14px;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.citation-copied.show {
+  display: block;
+  opacity: 1;
+}
+
+/* Styling for Date Range Inputs */
+.date-label {
+  font-size: 12px;
+  margin-left: 8px;
+}
+
+.date-input {
+  width: 100px;
+  padding: 6px;
+  font-size: 12px;
+  border: 1px solid var(--text-color);
+  border-radius: 4px;
+  margin-left: 5px;
+}

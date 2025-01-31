@@ -1,0 +1,5 @@
+Running list of easter eggs/fun things!
+1. Try using 42 in the unit conversion
+2. Try converting newtons to kilonewtons
+3. Try converting planckLengths to anything
+4. What happens if the temperature is above boiling or below freezing?
