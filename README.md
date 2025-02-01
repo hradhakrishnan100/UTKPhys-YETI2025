@@ -130,11 +130,11 @@ physics-extension/
 ### **libs/**
 - **katex.min.css** and **katex.min.js**
   - Sourced from the [KaTeX GitHub Repository](https://github.com/KaTeX/KaTeX)
-  - KaTeX is used to render LaTeX equations quickly and with high quality.
+  - KaTeX renders LaTeX equations quickly and with high quality
 - **dom-to-image.min.js**
   - Sourced from the [dom-to-image GitHub Repository](https://github.com/tsayen/dom-to-image)
-  - dom-to-image converts DOM nodes into downloadable SVG/PNG images, enabling the equation download feature.
-``
+  - dom-to-image converts DOM nodes into downloadable SVG/PNG images, enabling the equation download feature
+```
 
 
 
