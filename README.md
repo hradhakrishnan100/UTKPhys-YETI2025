@@ -11,7 +11,7 @@ The idea behind this project was to create a set of tools that I often find usef
 1. Opening the transmission.jpg in a HEX editor revealed the bytes were flipped as per the hint in the initial email
 2. My code for fixing the file is in the decoding folder, byteswitch.ipynb
 3. I used binwalk to extract the files and learned about steganography!
-4. I spent way too long decoding that message because I got so hung up on the first image, am curious to know what the relationship between symbols and letters was
+4. I spent way too long decoding that message because I got so hung up on the first image, before I went back and read the email to see there were supposedly five images, so I am curious to know what the relationship between symbols and letters was
    
 ## How to Install Locally
 
@@ -25,7 +25,8 @@ The idea behind this project was to create a set of tools that I often find usef
    ```
 3. Enable **Developer Mode** (top right).
 4. Click **Load Unpacked** and select the `physics-extension` folder.
-
+5. Go to details and make sure it is pinned to the toolbar
+6. Right click the icon and open the sidepanel (I cannot figure out how to get this to happen automatically)
 ---
 
 ## Features
@@ -36,7 +37,7 @@ The idea behind this project was to create a set of tools that I often find usef
 
 ### 2. **Equation Overlay**
    - Render, download, and search **LaTeX equations**.  (I got to use this for a talk in group meeting today it was very exciting)
-   - Useful for making PowerPoint slides.  
+   - Useful for making PowerPoint slides  
    - Search for predefined equations
      
 ### 3. **arXiv Search**
@@ -56,7 +57,7 @@ The idea behind this project was to create a set of tools that I often find usef
 - [ ] More efficiently figure out how to make a glossary for units and equations. . .instead of just copying them one by one 
 - [ ] Improve citation formatting, it's really bad  
 - [ ] A nicer way to organize saved arXiV files (but honestly Readcube is great at this)
-- [ ] Figure out why the reverse chronological ordering isn't working
+- [ ] Figure out why the reverse chronological ordering isn't working + generally improve the search, the way it pulls papers is really random 
 - [ ] Allow for hovering/seeing the full abstracts
 - [ ] Add **Dark Mode** (because it’s superior, and in that vein improve the color scheme/general UI/design)
 - [ ] More easter eggs!
