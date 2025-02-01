@@ -46,7 +46,10 @@ The idea behind this project was to create a set of tools that I often find usef
    - Highlights search terms
 
 ### 4. **Saved Articles**
-   - Store and manage research references.  
+   - Store and manage research references.
+
+### 5. **Coffee Counter**
+   - Because I really need to drink less coffee (> 10 coffees were involved in the making of this tool)
 
 > **Note:** While these tools already exist individually, this extension consolidates them into one tool that's easily accessible, saving tab space and improving efficiency
 
@@ -77,6 +80,7 @@ physics-extension/
 ├── converter.js             # Module for unit conversion calculations
 ├── arxiv.js                 # Module for arXiv search
 ├── equation.js              # Module for LaTeX equation rendering and downloading
+├── coffee.js                # Module for watching coffee count
 └── libs/                    # Folder containing third-party libraries:
     ├── katex.min.css        # KaTeX CSS for LaTeX rendering
     ├── katex.min.js         # KaTeX JS for LaTeX rendering
