@@ -109,8 +109,8 @@ export const ArxivModule = (() => {
     }
     if (isFetching) return;
     isFetching = true;
-    // Construct the arXiv API URL
-    const arxivAPI = `https://export.arxiv.org/api/query?search_query=all:${encodeURIComponent(query)}&start=${startIndex}&max_results=${resultsPerPage}`;
+    // Construct the arXiv API URL with sorting by submitted date (newest first)
+    const arxivAPI = `https://export.arxiv.org/api/query?search_query=all:${encodeURIComponent(query)}&start=${startIndex}&max_results=${resultsPerPage}&sortBy=submittedDate&sortOrder=descending`;
     console.log(`Fetching: ${arxivAPI} (reset=${reset})`);
     try {
       const response = await fetch(arxivAPI);
