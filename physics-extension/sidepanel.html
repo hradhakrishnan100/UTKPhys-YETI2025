@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,124 +13,128 @@
   <script defer src="libs/dom-to-image.min.js"></script>
 </head>
 <body>
-  <div class="panel-container">
-    <!-- Carousel Container -->
-    <div class="carousel-container">
-      
-      <!-- Slide 0: Intro -->
-      <div class="carousel-slide slide-0">
-        <h2>Physics + Extensions</h2>
-        <p>Select a feature panel or use the arrows below:</p>
-        <div class="feature-panel-list">
-          <!-- Unit Converter Panel -->
-          <div class="feature-panel conv-accent" data-target="1">
-            <h3>Unit Converter</h3>
-            <p>Convert between meters, joules, light-years, and more.</p>
-          </div>
-          <!-- Equation Renderer Panel -->
-          <div class="feature-panel eq-accent" data-target="2">
-            <h3>Equation Renderer</h3>
-            <p>Render LaTeX equations, then download as SVG or PNG.</p>
-          </div>
-          <!-- arXiv Reference Search Panel -->
-          <div class="feature-panel ref-accent" data-target="3">
-            <h3>arXiv Reference Search</h3>
-            <p>Search for relevant research papers on arXiv.</p>
-          </div>
-          <!-- Saved Articles Panel -->
-          <div class="feature-panel saved-accent" data-target="4">
-            <h3>Saved Articles</h3>
-            <p>View your saved arXiv papers.</p>
-          </div>
+  <!-- Coffee Counter Container (new feature) -->
+  <div id="coffee-counter-container">
+    <span id="coffee-counter">Coffee Count: 0</span>
+    <button id="coffee-button">Drink Coffee</button>
+  </div>
+
+  <!-- Carousel Container -->
+  <div class="carousel-container">
+    
+    <!-- Slide 0: Intro -->
+    <div class="carousel-slide slide-0">
+      <h2>Physics + Extensions</h2>
+      <p>Select a feature panel or use the arrows below:</p>
+      <div class="feature-panel-list">
+        <!-- Unit Converter Panel -->
+        <div class="feature-panel conv-accent" data-target="1">
+          <h3>Unit Converter</h3>
+          <p>Convert between meters, joules, light-years, and more.</p>
+        </div>
+        <!-- Equation Renderer Panel -->
+        <div class="feature-panel eq-accent" data-target="2">
+          <h3>Equation Renderer</h3>
+          <p>Render LaTeX equations, then download as SVG or PNG.</p>
+        </div>
+        <!-- arXiv Reference Search Panel -->
+        <div class="feature-panel ref-accent" data-target="3">
+          <h3>arXiv Reference Search</h3>
+          <p>Search for relevant research papers on arXiv.</p>
+        </div>
+        <!-- Saved Articles Panel -->
+        <div class="feature-panel saved-accent" data-target="4">
+          <h3>Saved Articles</h3>
+          <p>View your saved arXiv papers.</p>
         </div>
       </div>
-      
-      <!-- Slide 1: Unit Converter -->
-      <div class="carousel-slide slide-1">
-        <h2>Unit Converter</h2>
-        <label for="category-input" class="converter-label">Category:</label>
-        <input id="category-input" list="categoryList" placeholder="Pick or type a category" class="unit-datalist" />
-        <datalist id="categoryList">
-          <option value="Length">
-          <option value="Mass">
-          <option value="Time">
-          <option value="Energy">
-          <option value="Temperature">
-          <option value="Force">
-          <option value="Pressure">
-        </datalist>
-        <label for="input-value" class="converter-label">Value:</label>
-        <input type="number" id="input-value" placeholder="Enter a value" />
-        <div class="unit-selection-container">
-          <div class="unit-box">
-            <label for="from-unit-input" class="converter-label">From:</label>
-            <input id="from-unit-input" list="fromUnitsList" placeholder="Pick or type unit" class="unit-datalist" />
-            <datalist id="fromUnitsList"></datalist>
-          </div>
-          <span class="arrow">→</span>
-          <div class="unit-box">
-            <label for="to-unit-input" class="converter-label">To:</label>
-            <input id="to-unit-input" list="toUnitsList" placeholder="Pick or type unit" class="unit-datalist" />
-            <datalist id="toUnitsList"></datalist>
-          </div>
-        </div>
-        <p id="conversion-result">Converted value will appear here.</p>
-      </div>
-      
-      <!-- Slide 2: Equation Renderer -->
-      <div class="carousel-slide slide-2">
-        <h2>Equation Renderer</h2>
-        <div class="equation-controls">
-          <input type="text" id="eq-search" placeholder="Search for an equation..." list="equationList" />
-          <datalist id="equationList">
-            <option value="Quadratic Formula">
-            <option value="Euler's Identity">
-            <option value="Pythagorean Theorem">
-            <!-- Additional options are auto-populated via equation.js -->
-          </datalist>
-        </div>
-        <textarea id="latex-input" placeholder="Enter LaTeX code here"></textarea>
-        <div class="render-controls">
-          <button id="render-btn">Render Equation</button>
-        </div>
-        <div id="equation-output"></div>
-        <div class="download-controls">
-          <button id="download-svg-btn">Download SVG</button>
-          <button id="download-png-btn">Download PNG</button>
-        </div>
-      </div>
-      
-      <!-- Slide 3: arXiv Reference Search -->
-      <div class="carousel-slide slide-3">
-        <h2>arXiv Reference Search</h2>
-        <div class="search-section">
-          <input type="text" id="arxiv-query" placeholder="Search arXiv" />
-          <button id="search-arxiv-btn" class="search-btn">Search</button>
-        </div>
-        <div id="arxiv-results-container">
-          <div id="arxiv-results"></div>
-        </div>
-        <div id="citation-copied" class="citation-copied">Citation copied!</div>
-      </div>
-      
-      <!-- Slide 4: Saved Articles -->
-      <div class="carousel-slide slide-4">
-        <div class="saved-header">
-          <h2>Saved Articles</h2>
-          <button id="clear-saved-btn">Clear</button>
-        </div>
-        <div id="saved-articles-container">
-          <div id="saved-articles"></div>
-        </div>
-      </div>
-      
     </div>
     
-    <!-- Carousel Controls -->
-    <div class="carousel-controls">
-      <button id="prevBtn" class="nav-button">←</button>
-      <button id="nextBtn" class="nav-button">→</button>
+    <!-- Slide 1: Unit Converter -->
+    <div class="carousel-slide slide-1">
+      <h2>Unit Converter</h2>
+      <label for="category-input" class="converter-label">Category:</label>
+      <input id="category-input" list="categoryList" placeholder="Pick or type a category" class="unit-datalist" />
+      <datalist id="categoryList">
+        <option value="Length">
+        <option value="Mass">
+        <option value="Time">
+        <option value="Energy">
+        <option value="Temperature">
+        <option value="Force">
+        <option value="Pressure">
+      </datalist>
+      <label for="input-value" class="converter-label">Value:</label>
+      <input type="number" id="input-value" placeholder="Enter a value" />
+      <div class="unit-selection-container">
+        <div class="unit-box">
+          <label for="from-unit-input" class="converter-label">From:</label>
+          <input id="from-unit-input" list="fromUnitsList" placeholder="Pick or type unit" class="unit-datalist" />
+          <datalist id="fromUnitsList"></datalist>
+        </div>
+        <span class="arrow">→</span>
+        <div class="unit-box">
+          <label for="to-unit-input" class="converter-label">To:</label>
+          <input id="to-unit-input" list="toUnitsList" placeholder="Pick or type unit" class="unit-datalist" />
+          <datalist id="toUnitsList"></datalist>
+        </div>
+      </div>
+      <p id="conversion-result">Converted value will appear here.</p>
     </div>
+    
+    <!-- Slide 2: Equation Renderer -->
+    <div class="carousel-slide slide-2">
+      <h2>Equation Renderer</h2>
+      <div class="equation-controls">
+        <input type="text" id="eq-search" placeholder="Search for an equation..." list="equationList" />
+        <datalist id="equationList">
+          <option value="Quadratic Formula">
+          <option value="Euler's Identity">
+          <option value="Pythagorean Theorem">
+          <!-- Additional options are auto-populated via equation.js -->
+        </datalist>
+      </div>
+      <textarea id="latex-input" placeholder="Enter LaTeX code here"></textarea>
+      <div class="render-controls">
+        <button id="render-btn">Render Equation</button>
+      </div>
+      <div id="equation-output"></div>
+      <div class="download-controls">
+        <button id="download-svg-btn">Download SVG</button>
+        <button id="download-png-btn">Download PNG</button>
+      </div>
+    </div>
+    
+    <!-- Slide 3: arXiv Reference Search -->
+    <div class="carousel-slide slide-3">
+      <h2>arXiv Reference Search</h2>
+      <div class="search-section">
+        <input type="text" id="arxiv-query" placeholder="Search arXiv" />
+        <button id="search-arxiv-btn" class="search-btn">Search</button>
+      </div>
+      <div id="arxiv-results-container">
+        <div id="arxiv-results"></div>
+      </div>
+      <div id="citation-copied" class="citation-copied">Citation copied!</div>
+    </div>
+    
+    <!-- Slide 4: Saved Articles -->
+    <div class="carousel-slide slide-4">
+      <div class="saved-header">
+        <h2>Saved Articles</h2>
+        <button id="clear-saved-btn">Clear</button>
+      </div>
+      <div id="saved-articles-container">
+        <div id="saved-articles"></div>
+      </div>
+    </div>
+    
+  </div>
+  
+  <!-- Carousel Navigation Controls -->
+  <div class="carousel-controls">
+    <button id="prevBtn" class="nav-button">←</button>
+    <button id="nextBtn" class="nav-button">→</button>
   </div>
   
   <!-- Main Extension Script (entry point as a module) -->

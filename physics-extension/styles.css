@@ -96,9 +96,38 @@ h1, h2, h3 {
   margin: 0;
   font-size: 18px;
 }
+/* ----------------------------------------
+   Coffee Counter Styling 
+---------------------------------------- */
+#coffee-counter-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 8px;
+  background-color: var(--current-accent);
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+}
+
+#coffee-button {
+  /* Match the current accent color */
+  background-color: var(--current-accent);
+  border: 1px solid var(--current-accent);
+  border-radius: 4px;
+  color: #fff;
+  padding: 2px 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+/* Hover */
+#coffee-button:hover {
+  background-color: var(--current-accent);
+}
 
 /* ----------------------------------------
-   Equation Renderer Slide (Slide 2) Controls
+   Equation Renderer Slide Controls
 ----------------------------------------- */
 .equation-controls,
 .render-controls,
@@ -150,6 +179,7 @@ h1, h2, h3 {
   cursor: pointer;
   transition: background 0.3s ease;
   margin: 0 4px;
+
 }
 
 .render-controls button:hover,
@@ -160,8 +190,7 @@ h1, h2, h3 {
 /* ----------------------------------------
    Clear Saved Articles Button
 ----------------------------------------- */
-#clear-saved-btn {
-  background-color: var(--accent-saved);
+#clear-saved-btn {  background-color: var(--accent-saved);
   color: #fff;
   border: none;
   border-radius: 20px;
@@ -380,7 +409,7 @@ input:focus {
 }
 
 #arxiv-results-container {
-  max-height: 280px;
+  max-height: 400px;
   overflow-y: auto;
   padding-right: 8px;
 }
@@ -440,13 +469,12 @@ input:focus {
 }
 
 /* ----------------------------------------
-   Abstract Tooltip for arXiv Items
+   Tooltip for arXiv Items
 ----------------------------------------- */
 .abstract-tooltip {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease-in-out;
-  /* Positioning */
   position: absolute;
   top: 0;
   left: 105%;
@@ -506,6 +534,8 @@ input:focus {
 ----------------------------------------- */
 #saved-articles-container {
   margin-top: 10px;
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 #saved-articles-container h3 {

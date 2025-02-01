@@ -75,6 +75,7 @@ export const ConverterModule = (() => {
     fromUnitsList.innerHTML = "";
     toUnitsList.innerHTML = "";
     resultDisplay.textContent = "Converted value will appear here.";
+    resultDisplay.style.color = "black"; // Reset color when updating
     const category = categoryInput.value;
     if (!unitConversions[category]) {
       console.error("Invalid category: " + category);
@@ -93,6 +94,7 @@ export const ConverterModule = (() => {
     const fromUnit = fromUnitInput.value;
     const toUnit = toUnitInput.value;
     const val = parseFloat(inputValue.value);
+
     if (!cat || !unitConversions[cat]) {
       resultDisplay.textContent = "Please select a valid category.";
       resultDisplay.style.color = "black";
@@ -115,6 +117,14 @@ export const ConverterModule = (() => {
     }
     if (fromUnit === toUnit) {
       resultDisplay.textContent = "No conversion needed.";
+      resultDisplay.style.color = "black";
+      return;
+    }
+
+    // Easter Egg 1: If converting from or to Planck Length
+    if (cat === "Length" && (fromUnit === "Planck Length (ℓP)" || toUnit === "Planck Length (ℓP)")) {
+      resultDisplay.textContent = "You have reached the quantum realm!";
+      resultDisplay.style.color = "black";
       return;
     }
 
@@ -140,18 +150,60 @@ export const ConverterModule = (() => {
         resultDisplay.style.color = "black";
         return;
       }
-      resultDisplay.style.color = "black";
+      
+      // Fahrenheit 451 Easter Egg:
+      if (toUnit === "Fahrenheit (°F)" && Math.abs(convertedVal - 451) < 1e-3) {
+        resultDisplay.textContent = "Fahrenheit 451: Book burning temperature!";
+        resultDisplay.style.color = "black";
+        return;
+      }
+      
+      // Temperature display color based on boiling/freezing points.
+      let boilingPoint, freezingPoint;
+      if (toUnit === "Celsius (°C)") {
+        boilingPoint = 100;
+        freezingPoint = 0;
+      } else if (toUnit === "Fahrenheit (°F)") {
+        boilingPoint = 212;
+        freezingPoint = 32;
+      } else if (toUnit === "Kelvin (K)") {
+        boilingPoint = 373.15;
+        freezingPoint = 273.15;
+      }
+      
+      if (boilingPoint !== undefined && freezingPoint !== undefined) {
+        if (convertedVal > boilingPoint) {
+          resultDisplay.style.color = "red";
+        } else if (convertedVal < freezingPoint) {
+          resultDisplay.style.color = "blue";
+        } else {
+          resultDisplay.style.color = "black";
+        }
+      } else {
+        resultDisplay.style.color = "black";
+      }
+      
       resultDisplay.textContent = `${convertedVal.toFixed(4)} ${toUnit}`;
       return;
     }
 
-    // Standard conversion
+    // Standard conversion handling (for non-temperature categories)
     const baseVal = val * unitConversions[cat][fromUnit];
     const convertedVal = baseVal / unitConversions[cat][toUnit];
+
+    // Check for conversion result of 42
+    if (Math.abs(convertedVal - 42) < 1e-6) {
+      resultDisplay.textContent = "42: The answer to Life, the Universe, and Everything!";
+      resultDisplay.style.color = "black";
+      return;
+    }
+
     resultDisplay.classList.remove("result-animate");
-    void resultDisplay.offsetWidth; // Force reflow for animation restart
+    // Force reflow for CSS animation restart.
+    void resultDisplay.offsetWidth;
     resultDisplay.classList.add("result-animate");
     resultDisplay.textContent = `${convertedVal.toExponential(6)} ${toUnit}`;
+    resultDisplay.style.color = "black";
   }
 
   function bindEvents() {
