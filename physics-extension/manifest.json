@@ -2,14 +2,9 @@
   "manifest_version": 3,
   "name": "PhysX",
   "version": "1.0",
-  "description": "All-in-one physics tools: unit converter, equation overlay, reference search, and saved articles.",
-  "permissions": [
-    "storage",
-    "sidePanel"
-  ],
-  "host_permissions": [
-    "<all_urls>"
-  ],
+  "description": "All-in-one physics tools: unit converter, equation renderer, and reference search.",
+  "permissions": ["storage", "sidePanel"],
+  "host_permissions": ["<all_urls>"],
   "side_panel": {
     "default_path": "sidepanel.html"
   },
@@ -21,5 +16,8 @@
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
   }
 }

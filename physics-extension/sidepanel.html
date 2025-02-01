@@ -4,6 +4,12 @@
   <meta charset="UTF-8" />
   <title>PhysX</title>
   <link rel="stylesheet" href="styles.css" />
+  <!-- Local KaTeX CSS -->
+  <link rel="stylesheet" href="libs/katex.min.css" />
+  <!-- Local KaTeX JS -->
+  <script defer src="libs/katex.min.js"></script>
+  <!-- Local dom-to-image JS -->
+  <script defer src="libs/dom-to-image.min.js"></script>
 </head>
 <body>
   <div class="panel-container">
@@ -20,10 +26,10 @@
             <h3>Unit Converter</h3>
             <p>Convert between meters, joules, light-years, and more.</p>
           </div>
-          <!-- Equation Overlay Panel -->
+          <!-- Equation Renderer Panel -->
           <div class="feature-panel eq-accent" data-target="2">
-            <h3>Equation Overlay</h3>
-            <p>Render or search for equations and convert to LaTeX or SVG.</p>
+            <h3>Equation Renderer</h3>
+            <p>Render LaTeX equations, then download as SVG or PNG.</p>
           </div>
           <!-- arXiv Reference Search Panel -->
           <div class="feature-panel ref-accent" data-target="3">
@@ -52,10 +58,8 @@
           <option value="Force">
           <option value="Pressure">
         </datalist>
-
         <label for="input-value" class="converter-label">Value:</label>
         <input type="number" id="input-value" placeholder="Enter a value" />
-
         <div class="unit-selection-container">
           <div class="unit-box">
             <label for="from-unit-input" class="converter-label">From:</label>
@@ -72,11 +76,27 @@
         <p id="conversion-result">Converted value will appear here.</p>
       </div>
       
-      <!-- Slide 2: Equation Overlay -->
+      <!-- Slide 2: Equation Renderer -->
       <div class="carousel-slide slide-2">
-        <h2>Equation Overlay</h2>
-        <textarea id="latex-input" placeholder="Enter LaTeX here"></textarea>
+        <h2>Equation Renderer</h2>
+        <div class="equation-controls">
+          <input type="text" id="eq-search" placeholder="Search for an equation..." list="equationList" />
+          <datalist id="equationList">
+            <option value="Quadratic Formula">
+            <option value="Euler's Identity">
+            <option value="Pythagorean Theorem">
+            <!-- Additional options are auto-populated via equation.js -->
+          </datalist>
+        </div>
+        <textarea id="latex-input" placeholder="Enter LaTeX code here"></textarea>
+        <div class="render-controls">
+          <button id="render-btn">Render Equation</button>
+        </div>
         <div id="equation-output"></div>
+        <div class="download-controls">
+          <button id="download-svg-btn">Download SVG</button>
+          <button id="download-png-btn">Download PNG</button>
+        </div>
       </div>
       
       <!-- Slide 3: arXiv Reference Search -->
@@ -94,9 +114,10 @@
       
       <!-- Slide 4: Saved Articles -->
       <div class="carousel-slide slide-4">
-        <h2>Saved Articles</h2>
-        <!-- NEW: Clear All Saved Articles Button -->
-        <button id="clear-saved-btn">Clear All Saved Articles</button>
+        <div class="saved-header">
+          <h2>Saved Articles</h2>
+          <button id="clear-saved-btn">Clear</button>
+        </div>
         <div id="saved-articles-container">
           <div id="saved-articles"></div>
         </div>
@@ -111,7 +132,7 @@
     </div>
   </div>
   
-  <!-- Main Extension Script (Entry Point) -->
+  <!-- Main Extension Script (entry point as a module) -->
   <script type="module" src="popup.js"></script>
 </body>
 </html>

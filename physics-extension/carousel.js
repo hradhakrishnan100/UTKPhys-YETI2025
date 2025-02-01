@@ -1,6 +1,6 @@
 // carousel.js: Module for carousel functionality
 
-export function initCarousel() {
+export default function initCarousel() {
   const root = document.documentElement;
   const accentVars = {
     0: '--accent-home',

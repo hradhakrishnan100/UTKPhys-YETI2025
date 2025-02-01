@@ -1,11 +1,14 @@
-// popup.js: Main entry point for the PhysX extension
+// popup.js
+import initCarousel from "./carousel.js";
+import { ConverterModule } from "./converter.js";
+import { ArxivModule } from "./arxiv.js";
+import { EquationModule } from "./equation.js";
 
-import { initCarousel } from "./carousel.js";
-import { initArxiv } from "./arxiv.js";
-import { initConverter } from "./converter.js";
-
-document.addEventListener("DOMContentLoaded", () => {
+// Use window.onload to ensure all resources (images, styles, etc.) are fully loaded.
+window.addEventListener("load", () => {
+  console.log("Window fully loaded; initializing modules...");
   initCarousel();
-  initArxiv();
-  initConverter();
+  ConverterModule.init();
+  ArxivModule.init();
+  EquationModule.init();
 });

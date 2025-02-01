@@ -1,18 +1,7 @@
 // converter.js: Module for unit conversion functionality
 
-export function initConverter() {
-  const categoryInput = document.getElementById("category-input");
-  const fromUnitInput = document.getElementById("from-unit-input");
-  const toUnitInput = document.getElementById("to-unit-input");
-  const fromUnitsList = document.getElementById("fromUnitsList");
-  const toUnitsList = document.getElementById("toUnitsList");
-  const inputValue = document.getElementById("input-value");
-  const resultDisplay = document.getElementById("conversion-result");
-
-  if (!categoryInput || !fromUnitInput || !toUnitInput || !resultDisplay) {
-    console.error("ERROR: Missing unit converter elements.");
-    return;
-  }
+export const ConverterModule = (() => {
+  let categoryInput, fromUnitInput, toUnitInput, fromUnitsList, toUnitsList, inputValue, resultDisplay;
 
   const unitConversions = {
     Length: {
@@ -83,13 +72,12 @@ export function initConverter() {
   };
 
   function populateDatalists() {
-    const category = categoryInput.value;
     fromUnitsList.innerHTML = "";
     toUnitsList.innerHTML = "";
     resultDisplay.textContent = "Converted value will appear here.";
-
+    const category = categoryInput.value;
     if (!unitConversions[category]) {
-      console.error("ERROR: Invalid category selected:", category);
+      console.error("Invalid category: " + category);
       return;
     }
     Object.keys(unitConversions[category]).forEach(unit => {
@@ -105,9 +93,8 @@ export function initConverter() {
     const fromUnit = fromUnitInput.value;
     const toUnit = toUnitInput.value;
     const val = parseFloat(inputValue.value);
-
     if (!cat || !unitConversions[cat]) {
-      resultDisplay.textContent = "Please select a valid category (e.g., Length, Mass, Time).";
+      resultDisplay.textContent = "Please select a valid category.";
       resultDisplay.style.color = "black";
       return;
     }
@@ -130,19 +117,21 @@ export function initConverter() {
       resultDisplay.textContent = "No conversion needed.";
       return;
     }
+
+    // Temperature conversion handling
     if (cat === "Temperature") {
       const tempConversions = {
         "Celsius (°C)": {
-          "Fahrenheit (°F)": val => (val * 9 / 5) + 32,
-          "Kelvin (K)": val => val + 273.15
+          "Fahrenheit (°F)": v => (v * 9 / 5) + 32,
+          "Kelvin (K)": v => v + 273.15
         },
         "Fahrenheit (°F)": {
-          "Celsius (°C)": val => (val - 32) * 5 / 9,
-          "Kelvin (K)": val => (val - 32) * 5 / 9 + 273.15
+          "Celsius (°C)": v => (v - 32) * 5 / 9,
+          "Kelvin (K)": v => (v - 32) * 5 / 9 + 273.15
         },
         "Kelvin (K)": {
-          "Celsius (°C)": val => val - 273.15,
-          "Fahrenheit (°F)": val => (val - 273.15) * 9 / 5 + 32
+          "Celsius (°C)": v => v - 273.15,
+          "Fahrenheit (°F)": v => (v - 273.15) * 9 / 5 + 32
         }
       };
       const convertedVal = tempConversions[fromUnit]?.[toUnit]?.(val);
@@ -151,38 +140,39 @@ export function initConverter() {
         resultDisplay.style.color = "black";
         return;
       }
-      const tempC = tempConversions[fromUnit]?.["Celsius (°C)"]?.(val) ?? val;
-      resultDisplay.style.color = tempC <= 0 ? "blue" : tempC >= 100 ? "red" : "";
+      resultDisplay.style.color = "black";
       resultDisplay.textContent = `${convertedVal.toFixed(4)} ${toUnit}`;
       return;
     }
-    resultDisplay.style.color = "black";
-    if (fromUnit.includes("Planck Length") || toUnit.includes("Planck Length")) {
-      resultDisplay.textContent = "You've reached the quantum realm.";
-      return;
-    }
-    if (fromUnit.includes("Newtons") || toUnit.includes("Newtons")) {
-      resultDisplay.textContent = `${val.toFixed(4)} ${toUnit}`;
-      resultDisplay.style.animation = "fallingEffect 1s ease-out";
-      return;
-    }
-    if (val === 42) {
-      resultDisplay.textContent = "42! The Answer to Life, the Universe, and Everything.";
-      return;
-    }
+
+    // Standard conversion
     const baseVal = val * unitConversions[cat][fromUnit];
     const convertedVal = baseVal / unitConversions[cat][toUnit];
     resultDisplay.classList.remove("result-animate");
-    void resultDisplay.offsetWidth; // Trigger reflow for animation restart
+    void resultDisplay.offsetWidth; // Force reflow for animation restart
     resultDisplay.classList.add("result-animate");
     resultDisplay.textContent = `${convertedVal.toExponential(6)} ${toUnit}`;
   }
 
-  categoryInput.addEventListener("change", populateDatalists);
-  fromUnitInput.addEventListener("change", convertUnits);
-  toUnitInput.addEventListener("change", convertUnits);
-  inputValue.addEventListener("input", convertUnits);
-  inputValue.addEventListener("keyup", convertUnits);
+  function bindEvents() {
+    categoryInput.addEventListener("change", populateDatalists);
+    fromUnitInput.addEventListener("change", convertUnits);
+    toUnitInput.addEventListener("change", convertUnits);
+    inputValue.addEventListener("input", convertUnits);
+    inputValue.addEventListener("keyup", convertUnits);
+  }
 
-  populateDatalists();
-}
+  function init() {
+    categoryInput = document.getElementById("category-input");
+    fromUnitInput = document.getElementById("from-unit-input");
+    toUnitInput = document.getElementById("to-unit-input");
+    fromUnitsList = document.getElementById("fromUnitsList");
+    toUnitsList = document.getElementById("toUnitsList");
+    inputValue = document.getElementById("input-value");
+    resultDisplay = document.getElementById("conversion-result");
+    populateDatalists();
+    bindEvents();
+  }
+
+  return { init };
+})();
