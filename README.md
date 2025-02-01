@@ -133,10 +133,14 @@ physics-extension/
 
 --- Used to convert equations to pngs - citations above
 ## Acknowledgements 
-### **KaTeX:** KaTeX is used to render LaTeX equations:  
-### **dom-to-image** Used to convert equations to pngs - citations above
-### **ChatGPT-4o** For helping me debug my carousel feature + the arXiv search 
-### **arXiv API** This extension uses the arXiv API to fetch research papers. We thank Cornell University for providing access to this valuable resource.
+### **KaTeX:** 
+KaTeX is used to render LaTeX equations (citation above)
+### **dom-to-image** 
+Used to convert equations to pngs (citations above)
+### **ChatGPT-4o** 
+For helping me debug my carousel feature when it kept scrolling at weird increments + the arXiv search 
+### **arXiv API** 
+This part of the extension uses the arXiv API to fetch research papers. Acknowledgements to Cornell University for providing access to this
 
 ## Easter Eggs
-There are several **easter eggs** hidden in the extension. I think it’s more fun to find them yourself, but the running list can be found in `easter.txt`.
+There are a few easter eggs hidden in the extension. I think it’s more fun to find them yourself, but the running list can be found in `easter.txt`.
