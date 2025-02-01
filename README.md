@@ -60,11 +60,12 @@ The idea behind this project was to create a set of tools that I often find usef
 - [ ] More efficiently figure out how to make a glossary for units and equations. . .instead of just copying them one by one 
 - [ ] Improve citation formatting, it's really bad  
 - [ ] A nicer way to organize saved arXiV files (but honestly Readcube is great at this)
-- [ ] Figure out why the reverse chronological ordering isn't working + generally improve the search, the way it pulls papers is really random 
+- [ ] Figure out why the reverse chronological ordering isn't working + generally improve the search, so the pulling of papers is not random + add more search filters
 - [ ] Allow for hovering/seeing the full abstracts
-- [ ] Add **Dark Mode** (because it’s superior, and in that vein improve the color scheme/general UI/design)
+- [ ] Add **Dark Mode** (because it’s superior, and in that vein improve the color scheme/general UI/design/spacing)
 - [ ] More easter eggs!
-- [ ] Functionality in other browsers because I do not actually like Chrome 
+- [ ] Functionality in other browsers because I do not actually like Chrome
+- [ ] Make the sidepanel open with one click
 ---
 
 ## File Structure
@@ -73,7 +74,7 @@ The idea behind this project was to create a set of tools that I often find usef
 physics-extension/
 ├── manifest.json            # Chrome extension manifest file
 ├── popup.js                 # JavaScript entry that initializes modules
-├── background.js            # Configures the side panel on installation and opens it with icon clicks
+├── background.js            # Configures the side panel on installation and should open it with icon clicks
 ├── sidepanel.html           # UI using a carousel layout for features
 ├── styles.css               # CSS for layout, colors, transitions, and animations
 ├── carousel.js              # Module for carousel navigation and UI updates
@@ -90,7 +91,7 @@ physics-extension/
 ### **manifest.json**
 - The manifest file for the Chrome extension
 - Defines permissions, background scripts, icons, and UI elements
-- Declares the side panel UI and required permissions (e.g., for storage and sidePanel)
+- Declares the side panel UI and required permissions (e.g., for storage)
 
 ### **popup.js**
 - The main JavaScript entry point for the extension.
