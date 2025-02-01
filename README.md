@@ -60,7 +60,7 @@ The idea behind this project was to create a set of tools that I often find usef
 - [ ] More efficiently figure out how to make a glossary for units and equations. . .instead of just copying them one by one 
 - [ ] Improve citation formatting, it's really bad  
 - [ ] A nicer way to organize saved arXiV files (but honestly Readcube is great at this)
-- [ ] Figure out why the reverse chronological ordering isn't working + generally improve the search, so the pulling of papers is not random + add more search filters
+- [ ] Add more search filters
 - [ ] Allow for hovering/seeing the full abstracts
 - [ ] Add **Dark Mode** (because it’s superior, and in that vein improve the color scheme/general UI/design/spacing)
 - [ ] More easter eggs!
@@ -144,7 +144,7 @@ KaTeX is used to render LaTeX equations (citation above)
 ### **dom-to-image** 
 Used to convert equations to pngs (citations above)
 ### **ChatGPT-4o** 
-For helping me debug my carousel feature when it kept scrolling at weird increments + the arXiv search 
+For helping me debug my carousel feature when it kept scrolling at weird increments + the arXiv search when I forgot all about regular expressions
 ### **arXiv API** 
 This part of the extension uses the arXiv API to fetch research papers. Acknowledgements to Cornell University for providing access to this
 
