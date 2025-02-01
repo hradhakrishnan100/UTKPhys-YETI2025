@@ -136,7 +136,7 @@ physics-extension/
 ``
 
 
---- Used to convert equations to pngs - citations above
+
 ## Acknowledgements 
 ### **KaTeX:** 
 KaTeX is used to render LaTeX equations (citation above)
