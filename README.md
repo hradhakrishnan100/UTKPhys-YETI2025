@@ -134,7 +134,7 @@ physics-extension/
 - **dom-to-image.min.js**
   - Sourced from the [dom-to-image GitHub Repository](https://github.com/tsayen/dom-to-image)
   - dom-to-image converts DOM nodes into downloadable SVG/PNG images, enabling the equation download feature
-```
+
 
 
 
